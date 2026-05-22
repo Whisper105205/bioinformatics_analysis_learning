@@ -1,0 +1,201 @@
+    1  mkdir -p ~linux_practice && cd ~/linux_practice
+    2  mkdir -p ~/linux_practice && cd ~/linux_practice
+    3  pwd
+    4  ls 
+    5  ls -l
+    6  ls -a
+    7  ls -lh
+    8  cd ..
+    9  pwd
+   10  cd ~/linux_practice
+   11  pwd
+   12  cd linux_practice
+   13  mkdir -p linux_practice/test/test1
+   14  cd ~/linux_practice/test/test1
+   15  ls
+   16  ls -l
+   17  rm -f linux_practice/
+   18  rm -rf linux_practice/
+   19  mkdir -p test/test1
+   20  cd test/test1
+   21  pwd
+   22  echo "这是一个测试文本">TEST.txt
+   23  echo "第二个测试文件">TEST2.txt
+   24  mkdir test_dir
+   25  cp TEST.txt TEST.txt.back
+   26  ls
+   27  cp TEST2.txt test_dir
+   28  ls test_dir
+   29  cp -r test_dir test_dir_bak
+   30  ls
+   31  mv TEST.txt.back TEST11.txt
+   32  ls
+   33  mv TEST11.txt test_dir_bak
+   34  ls
+   35  ls test_dir_bak
+   36  rm TEST11.txt
+   37  cd test_dir_bak/
+   38  rm TEST11.txt
+   39  ls
+   40  rm test_dir_bak
+   41  cd test1
+   42  cd test1/
+   43  cd ..
+   44  rm test_dir_bak
+   45  ls
+   46  rm -r test_dir_bak
+   47  ls
+   48  cat>data.txt>>EOP
+   49  cat>data.txt>>EOP
+   50  cat>data.txt<<EOP
+   51  张三 20 男 学生
+   52  李四 25 男 程序员
+   53  王五 22 女 学生
+   54  EOP
+   55  ls
+   56  cat data.txt
+   57  grep -n "男" data.txt
+   58  cut -d" " -f4 data.txt
+   59  awk '$2>20{print $0}' data.txt
+   60  sort data.txt 
+   61  sort -k1 data.txt
+   62  sort -k2 -n -r data.txt
+   63  curl-fsSL https://sh.zellij.dev|bash
+   64  curl -fsSL http://sh.zellij.dev|bash
+   65  
+   66   curl -fsSL https://sh.zellij.dev|bash
+   67  history
+   68  pwd
+   69  ll
+   70  git--version
+   71  git --version
+   72  git config --global user.name"Whisper105205"
+   73  git congfig --global user.email"752180269@qq.com"
+   74  git config --global user.email"752180269@qq.com"
+   75  git config --list
+   76  
+   77  dit config --global user.name "Whisper105205"
+   78  git config --global user.name "Whisper105205"
+   79  git config --global user.email "752180269@qq.com"
+   80  git config --list
+   81  ssh-keygen -t rsa -b 4096 -C "752180269@qq.com"
+   82  cat~/.ssh/id_rsa.pub
+   83  ls ~/.ssh
+   84  cat ~/.ssh/id_rsa.pub
+   85  ssh -T git@github.com
+   86  pwd
+   87  [200~https://github.com/Whisper105205/bioinformatics_analysis_learning.git~
+   88  git clone git@github.com:whisper105205/bioinformatics_analysis_learning.git
+   89  history
+   90   pwd
+   91  ls
+   92  cd ~/linux_practice
+   93  pwd
+   94  ls
+   95  ls -l
+   96  ls -a
+   97  ls -lh
+   98  mkdir test2
+   99  ls
+  100  mkdir test3 test4
+  101  ls
+  102  cd ~/test
+  103  cd ~/linux_practice/test
+  104  ls
+  105  cd ~/linux_practice/test/test1
+  106  ls
+  107  ls -l
+  108  ls -a
+  109  cd ..
+  110  cd ~
+  111  cd $HOME/linux_practice
+  112  cd ~/linux_practice/test
+  113  ls
+  114  mkdir -p a/b/c
+  115  ls -R
+  116  mkdir "test data"
+  117  ls -l
+  118  cd ~/linux_practice/test/test1
+  119  ls
+  120  mkdir -p d/e/f
+  121  ls -R
+  122  cd ~/linux_practice/test/test1/TEST.txt
+  123  cat TEST.txt
+  124  cat TEST2.txt
+  125  cd ~/linux_practice/test/test1/test_dir
+  126  ls
+  127  cd ..
+  128  ls
+  129  cp TEST.txt test_dir
+  130  cd ~/linux_practice/test/test1/test_dir
+  131  ls
+  132  cd ..
+  133  cp TEST.txt d/
+  134  cd ~/linux_practice/test/test1/d
+  135  ls
+  136  cd ..
+  137  cp -r d test_dir
+  138  cd ~/linux_practice/test/test1/test_dir
+  139  ls
+  140  rm -r d
+  141  ls
+  142  rm TEST.txt
+  143  ls
+  144  cd ..
+  145  ls
+  146  rm data.txt
+  147  ls
+  148  cat EOP
+  149  mv EOP data.txt
+  150  ls
+  151  mv data.txt d/
+  152  ls
+  153  mv d/ test_dir/
+  154  ls
+  155  ls test_dir
+  156  rm TEST2
+  157  cd ~linux_practice/test/test1/test_dir
+  158  ls
+  159  cd test_dir
+  160  ls
+  161  rm TEST2.txt
+  162  ls
+  163  ls -R
+  164  rm e f
+  165  rm e
+  166  rm -r e
+  167  cd d
+  168  ls
+  169  rm -r e
+  170  ls
+  171  cd data.txt
+  172  cat data.txt
+  173  head -2 data.txt
+  174  tail -2 data.txt
+  175  tail -4 data.txt
+  176  grep -n "张三" data.txt
+  177  grep -n "男" data.txt
+  178  grep -n "女" data.txt
+  179  grep -v "学生" data.txt
+  180  grep -v -n "男" data.txt
+  181  cut -d " " -f1 data.txt
+  182  cut -d " " -f1,3 data.txt
+  183  cut -d" " -f2
+  184  awk'NF' data.txt
+  185  awk '{print $1,$3}' data.txt
+  186  awk '{print $1,$4}' data.txt
+  187  awk '$2>22{print $0}' data.txt
+  188  awk '$2>20 & $2<25 {print $0}' data.txt
+  189  awk '{print $2}' data.txt
+  190  awk '$2<25{print $0}' data.txt
+  191  sort -k2 -r data.txt
+  192  sort -k2 -nr data.txt
+  193  sort -k2 -n data.txt
+  194  uniq -c data.txt
+  195  cat data.txt
+  196  sort -k2 -nr data.txt
+  197  uniq -d
+  198  uniq -d data.txt
+  199  history
+  200  cd ~/linux_practice
+  201  history>history.log
