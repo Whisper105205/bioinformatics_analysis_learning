@@ -1,0 +1,229 @@
+cat(R.version.string)
+rstudioapi::versionInfo()
+ls()
+x
+y
+leadership<-data.frame(manager=c(1,2,3,4,5),
+                       date=c("10/24/08","10/28/08","10/1/08","10/12/08","5/1/09"),
+                       country=c("UK","UK","US","US","US"),
+                       gender=c("M","F","F","M","F"),
+                       age=c(32,45,25,39,99),
+                       q1=c(5,3,3,4,2),
+                       q2=c(5,4,4,3,3),
+                       q3=c(4,5,5,3,2),
+                       q4=c(5,2,4,5,NA),
+                       q5=c(5,5,2,NA,1))
+leadership
+total_score<-within(leadership,q1+q2+q3+q4+q5)
+total_score
+mean_score<-total_score/5
+mean_score
+is.na(leadership)
+leadership$total_score<-within(leadership,{q1+q2+q3+q4+q5})
+leadership$mean_score<-total_score/5
+leadership
+leadership<-transform(leadership,
+                      total_score=q1+q2+q3+q4+q5,
+                      mean_score=(q1+q2+q3+q4+q5)/5)
+leadership
+leadership<-within(leadership,{
+  agecat<-NA
+  agecat[age>75]<-"Elder"
+  agecat[age>=55&age<=75]<-"Middle Aged"
+  agecat[age<55]<-"Young"})
+leadership
+leadership<-within(leadership,{
+  agecat[age>75]<-"Elder"
+  agecat[age>=55&age<=75]<-"Middle Aged"
+  agecat[age<55]<-"Young"})
+leadership
+fix(leadership)
+leadership
+names(leadership)[2]<-"testDate"
+leadership
+?names
+is.na(leadership)
+is.na(leadersjip[,5:12])
+leadership$age[leadership$age==99]<-NA
+is.na(leadership$age)
+ls()
+x
+y
+x<-c(2,4,6,NA,5)
+y<-sum(x)
+y
+y<-sum(x,na.rm=TRUE)
+y
+y<-sum(x,na.rm=TRUE)
+z<-prod(x)
+z
+z<-prod(x,na.rm=TRUE)
+z
+mydates<-as.Date()
+na.omit(leadership)
+birthday<-as.Date("11/28/2006","%m/%d/%Y")
+format(birthday,format="%d/%m/%y")
+today<-as.Date("06/01/2026","%m/%d/%Y")
+difftime(today,birthday,units="months")
+today<-as.Date("06/01/2026","%m/%d/%Y")
+difftime(today,birthday,units="weeks")
+newdata<-leadership[order(leadership$age),]
+newdata
+na.omit(leadership)
+leadership<-na.omit(leadership)
+leadership
+newdata<-leadership[leadership$age,]
+newdata
+newdata<-leadership[order(leadership$age),]
+newdata
+newdata2<-order(leadership$age)
+newdata2
+?order
+newdata<-leadership[order(-leadership$age)]
+newdata
+newdata<-leadership[order(leadership$age),]
+newdata
+newdata<-leadership[,6:10]
+newdata
+newdata1<-leadership[,c(6:10)]
+newdata1
+vars<-c("q1","q2","q3","q4","q5")
+newdata1<-leadership[,vars]
+newdata1
+newdata1<-leadership[vars]
+newdata1
+myvars<-paste("q",1:5,sep="")
+newdata1<-leadership[myvars]
+newdata1
+newdata1<-leadership[,!c(q3,q4)]
+newdata1
+leadership
+newdata1<-leadership[,!c("q3","q4")]
+newdata1
+newdata1<-leadership[,!names(leadership) %in% c("q3","q4")]
+newdata1
+newdata1<-leadership[,!age<30]
+newdata1
+newdata1<-leadership[,!age]
+newdata1
+newdata1<-leadership[,!6]
+newdata1
+newdata1
+newdata1<-leadership[1:2,]
+newdata1
+newdata1<-leadership[c(1,3),]
+newdata1<-leadership[!2,]
+newdata1
+newdata1<-leadership[,!age]
+newdata1
+newdata1<-leadership[,!leadership$age]
+newdata1
+newdata2<-leadership[!leadership$age]
+newdata2
+newdata2<-leadership[leadership$gender=="M"&leadership$age>30]
+newdata2
+newdata3<-leadership[leadership$gender=="M"&leadership$age>30]
+newdata3
+leadership
+newdata3<-leadership[leadership$gender=="M"&leadership$age>30,]
+newdata3
+newdata2<-subset(leadership,age>35|age<=25)
+newdata2
+newdata2<-subset(leadership,age>35|age<=25,select=gender:q5)
+newdata2
+mysample<-leadership[sample(1:nrow(leadership),1,replace=FALSE)]
+mysample
+leadership2<-data.frame(manager=c(1,2,3,4,5),
+                        date=c("10/24/08", "10/28/08","10/1/08", "10/12/08", "5/1/09"),
+                        countr=c("US","US","UK","US","UK"),
+                        gender=c("M","F","M","F","F"),
+                        age=c(32,38,26,29,46),
+                        q1=c(5,3,3,3,2),
+                        q2=c(4,5,5,3,2),
+                        q3=c(5,2,5,4,1),
+                        q4=c(5,5,5,NA,2),
+                        q5=c(5,5,2,NA,1)
+                        )
+library(dplyr)
+install.packages("dplyr")
+library(dplyr)
+leadership2<-mutate(leadership2,
+                   total_score=q1+q2+q3+q4+q5,
+                   mean_score=(q1+q2+q3+q4+q5)/5)
+leadership2
+leadership2$gender<-recode(leadership2$gender,"M"="male","F"="female")
+leadership2<-rename(leadership2,ID="manager",sex="gender")
+leadership2<arrange(leadership2,age,total_score)
+leadership_ratings<-select(leadership2,ID,mean_score)
+leadership2_men_high<-filter(leadership2,sex=="male"&total_score>10)
+leadership2
+leadership_ratings
+leadership2_men_high
+library(ggplot2)
+library(mosaicData)
+ggplot(CPS85,aes(x=exper,y=wage))+
+  geom_point()
+CPS85_1<-CPS85[-CPS85$wage>40,]
+ggplot(CPS85_1,aes(x=exper,y=wage))+
+  geom_point(color="lightblue",alpha=0.7,size=1.6)+
+  theme_bw()
+CPS85_1<-CPS85[CPS85$wage<40,]
+p1<-ggplot(CPS85_1,aes(x=exper,y=wage))+
+  geom_point(color="lightblue",alpha=0.8,size=1.6)+
+  theme_bw()
+p1
+CPS85_1<-CPS85[-CPS85$wage>40,]
+p1<-ggplot(CPS85_1,aes(x=exper,y=wage))+
+  geom_point(color="lightblue",alpha=0.8,size=1.6)+
+  theme_bw()
+p1
+CPS85
+CPS85_1<-CPS85[CPS85$wage<40,]
+p1<-ggplot(CPS85_1,aes(x=exper,y=wage))+
+  geom_point(color="lightblue",alpha=0.8,size=1.6)+
+  geom_smooth(method="lm",se=FALSE)+
+  theme_bw()
+p1
+savehistory(file = paste0("whisper_week2_R_history2_", format(Sys.time()), "%Y%m%d_%H"))
+
+
+library(ggplot2)
+library(mosaicData)
+png("p2.png",width=400,height=300,res=150)
+p2<-ggplot(CPS85,aes(x=exper,y=wage,color=sex,shape=sex,linetype=sex)+
+             geom_point(alpha=0.8,size=2,color="pink",color="lightyellow")+
+             geom_smooth(method="lm",se=FALSE,size=1.5,color="lightblue")+
+             theme_bw())
+print(p2)
+dev.off()
+
+library(ggplot2)
+library(mosaicData)
+png("p2.2.png",width=400,height=300,res=150)
+p2.2<-ggplot(CPS85_1,aes(x=exper,y=wage,color=sex,shape=sex,linetype=sex))+
+             geom_point(alpha=0.8,size=2)+
+             geom_smooth(method="lm",se=FALSE,size=1.5,color="lightblue")+
+             theme_bw()
+print(p2.2)
+dev.off()
+p2.2
+
+library(ggplot2)
+library(mosaicData)
+png("p2.2.png",width=800,height=600,res=300)
+p2.2<-ggplot(CPS85_1,aes(x=exper,y=wage,color=sex,shape=sex,linetype=sex))+
+  geom_point(alpha=0.8,size=2)+
+  geom_smooth(method="lm",se=FALSE,size=1.5)+
+  theme_bw()
+print(p2.2)
+dev.off()
+p2.2
+
+p3<-ggplot(CPS85_1,aes(x=exper,y=wage,color=sex,shape=sex,linetype=sex))+
+  geom_point(alpha=0.7,size=1.3)+
+  geom_smooth(method="lm",se=FALSE,size=1.5)+
+  scale_x_continuous(breaks=seq(0,60,10))+
+  scale_y_continuous(breaks=seq(0,30,5))+
+  scale_color_manual(values=c("lightblue","pink"))+
+  theme_bw()
+p3
